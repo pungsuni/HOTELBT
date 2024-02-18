@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.icia.hotel.dto.MEMBER" alias="member" />
+		<typeAlias type="com.icia.hotel.dto.ROOM" alias="room" />
+		<typeAlias type="com.icia.hotel.dto.AROUND" alias="around" />
+		<typeAlias type="com.icia.hotel.dto.PAGE" alias="paging" />
+		<typeAlias type="com.icia.hotel.dto.QUESTION" alias="question" />
+		<typeAlias type="com.icia.hotel.dto.NOTICE" alias="notice" />
+		<typeAlias type="com.icia.hotel.dto.COMMENT" alias="comment" />
+		<typeAlias type="com.icia.hotel.dto.BOOKDTO" alias="book" />
+		<typeAlias type="com.icia.hotel.dto.REVIEW" alias="review" />
+	</typeAliases>
+</configuration>

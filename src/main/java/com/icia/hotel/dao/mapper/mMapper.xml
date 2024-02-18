@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+
+	<insert id="mJoin" parameterType="member">
+		INSERT INTO HMEMBER
+		VALUES(#{MId},#{MPw},#{MName},#{MEmail},#{MPhone})
+	</insert>
+	
+	<select id="mLogin" parameterType="member" resultType="member">
+		SELECT * FROM HMEMBER WHERE MID=#{MId} AND MPW=#{MPw}
+	</select>
+	
+	<select id="mView" parameterType="String" resultType="member">
+		SELECT * FROM HMEMBER WHERE MID=#{MId}
+	</select>
+
+	<select id="idOverlap" parameterType="String" resultType="String">
+		SELECT MID FROM HMEMBER WHERE MID=#{MId}
+	</select>
+	
+	<select id="qList" parameterType="String" resultType="question">
+		SELECT * FROM QUESTION WHERE QID=#{QId}
+	</select>
+	
+	<select id="qView" parameterType="hashmap" resultType="question">
+		SELECT * FROM QUESTION WHERE QID=#{Id} AND QTITLE=#{Title}
+	</select>
+</mapper>

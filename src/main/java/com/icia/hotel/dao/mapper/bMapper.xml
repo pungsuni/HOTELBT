@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BOOKDTO">
+	<insert id="bBook" parameterType="book">
+		INSERT INTO BOOKDTO
+		VALUES(BOOKDTO_SEQ.NEXTVAL, #{BId}, #{BPeriod}, #{BName}, #{BPrice})
+	</insert>
+	
+	<delete id="bCancle" parameterType="int">
+		DELETE FROM BOOKDTO WHERE BNO=#{bNo}
+	</delete>
+	
+	<select id="bMlistCount" resultType="int">
+		SELECT COUNT(*) FROM BOOKDTO
+	</select>
+	
+	<select id="bMlist" parameterType="paging" resultType="book">
+		SELECT * FROM BOOKDTOLIST WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<select id="bMview" parameterType="int" resultType="book">
+		SELECT * FROM BOOKDTO WHERE BNO = #{bNo}
+	</select>
+	
+	<!-- roomPrice -->
+	<select id="roomPrice" parameterType="String" resultType="int">
+		SELECT RPRICE FROM ROOM WHERE RNAME = #{SO2}
+	</select>
+
+</mapper>

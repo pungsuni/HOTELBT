@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Admin">
+
+	<select id="aMlistCount" resultType="int">
+		SELECT COUNT(*) FROM HMEMBER
+	</select>
+	
+	<select id="aMlist" parameterType="paging" resultType="member">
+		SELECT * FROM MLIST WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<select id="aMview" parameterType="String" resultType="member">
+		SELECT * FROM HMEMBER WHERE MID=#{MId}
+	</select>
+	
+	<insert id="aNwrite" parameterType="notice">
+		INSERT INTO NOTICE 
+		VALUES(NOTICE_SEQ.NEXTVAL,#{NTitle}, #{NContent}, SYSDATE)
+	</insert>
+	
+	<select id="aQListCount" resultType="int">
+		SELECT COUNT(*) FROM QUESTION
+	</select>
+	
+	<select id="aQlist" parameterType="paging" resultType="question">
+		SELECT * FROM QLIST WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<select id="aQview" parameterType="int" resultType="question">
+		SELECT * FROM QUESTION WHERE QNO = #{QNo}
+	</select>
+	
+	<select id="cList" parameterType="int" resultType="comment">
+		SELECT * FROM COMMENTDTO WHERE CBNO=#{CBNo} ORDER BY CNO DESC
+	</select>
+	
+	<insert id="cWriter" parameterType="comment">
+		INSERT INTO COMMENTDTO VALUES(CMT_SEQ.NEXTVAL, #{CBNo}, #{CWriter}, #{CContent})
+	</insert>
+	
+	<delete id="cDelete" parameterType="comment">
+		DELETE FROM COMMENTDTO WHERE CNO=#{CNo} 
+	</delete>
+	
+</mapper>
